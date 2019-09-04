@@ -1,0 +1,35 @@
+This is the code book of the proccesing taks with Smartphone Data Base
+Firtly I download the file in my computer
+caract contiene valores de los nombre de las 561 variables 
+x_train contiene valores numericos de las variables
+y_train contiene valores de 1 a 6 que corresponden a las actividades
+subject_train contiene clave secuencial de 1 a 30 que corresponde a los sujetos de estudio
+Leemos las tablas y las guardamos en nuevas variables
+xtrain
+ytrain
+strain
+Como las tablas no cuentan con un identificar unico, se crea la variable "id"
+index1: tabla que contiene los valores de xtrain, la variable secuencial va de  id=1:6893
+index2: tabla que contiene los valores de ytrain, la variable secuencial va de  id=1:7351
+index3: tabla que contiene los valores de strain, la variable secuencial va de  id=1:7351
+a: tabla que resulta de unir index1 y index2 por id
+b: tabla que resulta de unir a e index3 por id. Por lo cual b es la tabla completa de TRAIN
+xtest: datos de la tabla X_test
+ytest: datos de la tabla Y_test
+stest: datos de la tabla Subject_test
+index4: tabla que contiene los valores de xtest, la variable secuencial va de id=1:2763
+index5: tabla que contiene los valores de ytest, la variable secuencial va de id=1:2946
+index6: tabla que contiene los valores de stest, la variable secuencial va de id=1:2946
+c: tabla que resulta de unir index4 y index5 por id
+d: tabla que resulta de unir c e index6 por id
+idem1: tabla que tiene los datos de b mas la columna key que identifica que es de TRAIN
+idem2: tabla que tiene los datos de d mas la columna key que identifica que es de TEST
+total: tabla que une las tablas idem1 e idem2 por las filas
+Renames las variables clave
+names(total)[783]="Secuencia"
+names(total)[784]="Activity"
+names(total)[785]="Sujeto"
+names(total)[786]="Grupo"
+for (i in 1:561){ names(total)[i]= caract[i,1]} Nombres a las variables de forma secuencial de acuerdo al diccionario de datos
+marca1: tabla total que contiene las columnas que tienen "mean" o "std" en el nombre de las variables
+por_var: tabla que agrupa la base marca1 por sujeto y actividad
